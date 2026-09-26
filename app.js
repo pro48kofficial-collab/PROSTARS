@@ -393,52 +393,51 @@ $("#openCaseButton")
     openSelectedCase;
 
 async function openSelectedCase() {
+  const button = $("#openCaseButton");
 
-  const button =
-    $("#openCaseButton");
+  if (!selectedCase) {
+    alert("Кейс не вибрано");
+    return;
+  }
 
-  button.disabled =
-    true;
-
-  button.textContent =
-    "Відкриваємо...";
+  button.disabled = true;
+  button.textContent = "Відкриваємо...";
 
   try {
+    console.log("Відкриваємо кейс:", selectedCase);
 
-    const result =
-      await api(
-        "/api/open",
-        {
-          method: "POST",
+    const telegramInput = $("#telegramId");
 
-          body:
-            JSON.stringify({
-              caseId:
-                selectedCase,
+    const telegramId = telegramInput
+      ? telegramInput.value.trim()
+      : "";
 
-              telegramId:
-                $("#telegramId")
-                  .value
-                  .trim()
-            })
-        }
-      );
+    const result = await api("/api/open", {
+      method: "POST",
+      body: JSON.stringify({
+        caseId: selectedCase,
+        telegramId: telegramId
+      })
+    });
 
-    animatePrize(
-      result.prize
-    );
+    console.log("Відповідь сервера:", result);
+
+    if (!result.prize) {
+      throw new Error("Сервер не повернув приз");
+    }
+
+    animatePrize(result.prize);
 
   } catch (error) {
+    console.error("OPEN CASE ERROR:", error);
 
     alert(
-      error.message
+      error.message ||
+      "Не вдалося відкрити кейс"
     );
 
-    button.disabled =
-      false;
-
-    button.textContent =
-      "Відкрити";
+    button.disabled = false;
+    button.textContent = "Відкрити";
   }
 }
 
