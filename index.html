@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+
+  <title>PROSTARS 💝</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    PROSTARS 💝
+  </div>
+
+  <button
+    id="profileButton"
+    class="profileButton"
+  >
+    👤
+  </button>
+
+</header>
+
+<main>
+
+  <section class="balanceCard">
+
+    <div>
+
+      <small>
+        Баланс
+      </small>
+
+      <div
+        id="balance"
+        class="balance"
+      >
+        0 ⭐
+      </div>
+
+    </div>
+
+    <div class="stats">
+
+      <span>
+        Зароблено:
+        <b id="earned">
+          0
+        </b>
+        ⭐
+      </span>
+
+      <span>
+        Витрачено:
+        <b id="spent">
+          0
+        </b>
+        ⭐
+      </span>
+
+    </div>
+
+  </section>
+
+  <nav class="tabs">
+
+    <button
+      class="tab active"
+      data-page="cases"
+    >
+      🎁 Кейси
+    </button>
+
+    <button
+      class="tab"
+      data-page="inventory"
+    >
+      🎒 Інвентар
+    </button>
+
+    <button
+      class="tab"
+      data-page="top"
+    >
+      🏆 ТОП 100
+    </button>
+
+    <button
+      class="tab"
+      data-page="profile"
+    >
+      👤 Профіль
+    </button>
+
+  </nav>
+
+  <!-- CASES -->
+
+  <section
+    id="cases"
+    class="page active"
+  >
+
+    <h2>
+      🎁 Кейси
+    </h2>
+
+    <div
+      id="casesGrid"
+      class="casesGrid"
+    ></div>
+
+    <div class="info">
+
+      ⭐ Зірки є лише
+      внутрішньоігровою валютою.
+
+      <br><br>
+
+      Виведення з сайту
+      немає.
+
+      <br><br>
+
+      Реальні роздачі
+      проходять тільки
+      в Telegram-каналі
+      @rozdacha_zvezd.
+
+    </div>
+
+    <h2>
+      🔥 Лут гравців
+    </h2>
+
+    <div
+      id="liveFeed"
+      class="liveFeed"
+    ></div>
+
+  </section>
+
+  <!-- INVENTORY -->
+
+  <section
+    id="inventory"
+    class="page"
+  >
+
+    <h2>
+      🎒 Інвентар
+    </h2>
+
+    <div
+      id="inventoryGrid"
+      class="inventoryGrid"
+    ></div>
+
+  </section>
+
+  <!-- TOP -->
+
+  <section
+    id="top"
+    class="page"
+  >
+
+    <h2>
+      🏆 ТОП 100
+    </h2>
+
+    <div
+      id="topList"
+      class="topList"
+    ></div>
+
+  </section>
+
+  <!-- PROFILE -->
+
+  <section
+    id="profile"
+    class="page"
+  >
+
+    <h2>
+      👤 Профіль
+    </h2>
+
+    <div class="profileCard">
+
+      <img
+        id="profileAvatar"
+        class="profileAvatar"
+      >
+
+      <input
+        id="nickname"
+        maxlength="24"
+        placeholder="Твій нік"
+      >
+
+      <label class="upload">
+
+        🖼️ Вибрати аватар
+
+        <input
+          id="avatarInput"
+          type="file"
+          accept="image/png,image/jpeg,image/webp"
+        >
+
+      </label>
+
+      <button
+        id="saveProfile"
+        class="mainButton"
+      >
+        Зберегти профіль
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+<!-- CASE MODAL -->
+
+<div
+  id="caseModal"
+  class="modal hidden"
+>
+
+  <div class="modalBox">
+
+    <button
+      id="closeModal"
+      class="close"
+    >
+      ×
+    </button>
+
+    <h2
+      id="modalTitle"
+    >
+      Кейc
+    </h2>
+
+    <div
+      id="reel"
+      class="reel"
+    ></div>
+
+    <div
+      id="telegramBox"
+      class="telegramBox hidden"
+    >
+
+      <b>
+        🔔 FREE кейс
+      </b>
+
+      <p>
+        Для відкриття FREE
+        потрібно бути підписаним
+        на канал:
+      </p>
+
+      <a
+        href="https://t.me/rozdacha_zvezd"
+        target="_blank"
+      >
+        @rozdacha_zvezd
+      </a>
+
+      <input
+        id="telegramId"
+        inputmode="numeric"
+        placeholder="Telegram ID"
+      >
+
+    </div>
+
+    <button
+      id="openCaseButton"
+      class="mainButton"
+    >
+      Відкрити
+    </button>
+
+    <div
+      id="result"
+      class="result"
+    ></div>
+
+  </div>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="/app.js"></script>
+
+</body>
+
+</html>
