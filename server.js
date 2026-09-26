@@ -61,7 +61,7 @@ const CASES = {
     id: "free",
     name: "FREE",
     price: 0,
-    image: "/images/cases/free.png",
+    image: "1790413531173.png",
     cooldown: 24 * 60 * 60 * 1000
   },
 
@@ -69,14 +69,14 @@ const CASES = {
     id: "prostars",
     name: "PROSTARS",
     price: 100,
-    image: "/images/cases/prostars.png"
+    image: "1790413697965.png"
   },
 
   nft: {
     id: "nft",
     name: "NFT GIFT",
     price: 1000,
-    image: "/images/cases/nft.png"
+    image: "1790413887596.png"
   }
 };
 
